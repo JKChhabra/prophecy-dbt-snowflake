@@ -9,8 +9,8 @@ WITH USED_CARS AS (
 reformat AS (
 
   SELECT 
-    DATA['manufacturer'] AS manufacturer,
-    DATA['model'] AS model,
+    DATA['manufacturer']::STRING AS manufacturer,
+    DATA['model']::STRING AS model,
     DATA['price'] / 280 AS price
   
   FROM USED_CARS
