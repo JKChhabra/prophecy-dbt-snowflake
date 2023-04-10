@@ -32,6 +32,30 @@ sqlModels:
       datasets: []
     createdAt: '2023-04-05 07:56:18'
     modifiedAt: '2023-04-05 07:56:18'
+  .prophecy/metadata/sqlmodels/TopSoldCars:
+    name: TopSoldCars
+    description: null
+    author: ashish@prophecy.io
+    files:
+    - models/TopSoldCars.sql
+    - .prophecy/ide/models/TopSoldCars.json
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2023-04-10 11:25:21'
+    modifiedAt: '2023-04-10 11:25:21'
+  .prophecy/metadata/sqlmodels/MostExpensiveCars:
+    name: MostExpensiveCars
+    description: null
+    author: ashish@prophecy.io
+    files:
+    - models/MostExpensiveCars.sql
+    - .prophecy/ide/models/MostExpensiveCars.json
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2023-04-10 11:27:00'
+    modifiedAt: '2023-04-10 11:27:00'
   .prophecy/metadata/sqlmodels/customer_reports:
     name: customer_reports
     description: null
@@ -113,6 +137,7 @@ sqlModels:
 sqlMacros:
   .prophecy/metadata/sqlmacros/add_audit_cols:
     name: add_audit_cols
+    macroType: query
     description: null
     author: ashish@prophecy.io
     files:
@@ -122,6 +147,7 @@ sqlMacros:
     modifiedAt: '2023-04-06 14:00:57'
   .prophecy/metadata/sqlmacros/cents_to_dollars:
     name: cents_to_dollars
+    macroType: expression
     description: null
     author: ashish@prophecy.io
     files:
@@ -130,6 +156,7 @@ sqlMacros:
     modifiedAt: '2023-04-06 14:09:30'
   .prophecy/metadata/sqlmacros/dollars_to_cents:
     name: dollars_to_cents
+    macroType: expression
     description: null
     author: ashish@prophecy.io
     files:
@@ -138,6 +165,7 @@ sqlMacros:
     modifiedAt: '2023-04-06 10:52:55'
   .prophecy/metadata/sqlmacros/human_readable_number:
     name: human_readable_number
+    macroType: expression
     description: this macro a number into human approximate readable number ex. 14,001
       -> 14K, 1,034,430 -> 1M and so on
     author: ashish@prophecy.io
@@ -239,6 +267,26 @@ sqlSources:
       author: ashish@prophecy.io
       createdAt: '2023-04-06 09:03:44'
       modifiedAt: '2023-04-06 09:03:44'
+    - name: CARS
+      description: null
+      author: ashish@prophecy.io
+      createdAt: '2023-04-10 07:40:35'
+      modifiedAt: '2023-04-10 07:40:35'
+    - name: CARS_DATA
+      description: null
+      author: ashish@prophecy.io
+      createdAt: '2023-04-10 07:44:28'
+      modifiedAt: '2023-04-10 07:44:28'
+    - name: CARS_DATA2
+      description: null
+      author: ashish@prophecy.io
+      createdAt: '2023-04-10 07:51:27'
+      modifiedAt: '2023-04-10 07:51:27'
+    - name: USED_CARS
+      description: null
+      author: ashish@prophecy.io
+      createdAt: '2023-04-10 07:55:35'
+      modifiedAt: '2023-04-10 07:55:35'
 sqlUnreferencedSources: {}
 sqlPipeline:
   name: sqlPipeline

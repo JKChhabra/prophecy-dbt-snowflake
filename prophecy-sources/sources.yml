@@ -146,3 +146,23 @@ sources:
     - name: "MAPS_DATA"
       dataType:
         type: "Variant"
+  - name: "CARS"
+    columns:
+    - name: "USEDCARS"
+      dataType:
+        type: "Variant"
+  - name: "CARS_DATA"
+    columns:
+    - name: "USEDCARS"
+      dataType:
+        type: "Variant"
+  - name: "CARS_DATA2"
+    columns:
+    - name: "USEDCARS"
+      dataType:
+        type: "Variant"
+  - name: "USED_CARS"
+    columns:
+    - name: "DATA"
+      dataType:
+        type: "Variant"
