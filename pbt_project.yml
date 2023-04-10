@@ -1,6 +1,6 @@
 name: prophecy_dbt_snowflake
 description: ''
-version: 0.0.1
+version: v1.0
 author: null
 language: sql
 buildSystem: ''
