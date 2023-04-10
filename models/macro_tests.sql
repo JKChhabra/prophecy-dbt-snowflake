@@ -81,8 +81,14 @@ HumanReadableAmount AS (
   
   FROM AmountByCustomer
 
+),
+
+add_audit_cols_1 AS (
+
+  {{ jaffle_shop.add_audit_cols(table_name = 'HumanReadableAmount', modified_by = 'ASHISH') }}
+
 )
 
 SELECT * 
 
-FROM HumanReadableAmount
+FROM add_audit_cols_1
