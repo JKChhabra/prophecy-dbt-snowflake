@@ -143,8 +143,8 @@ sqlMacros:
     files:
     - macros/add_audit_cols.sql
     - macros/macros_001.yml
-    createdAt: '2023-04-06 14:00:57'
-    modifiedAt: '2023-04-06 14:00:57'
+    createdAt: '2023-04-13 10:55:16'
+    modifiedAt: '2023-04-13 10:55:16'
   .prophecy/metadata/sqlmacros/cents_to_dollars:
     name: cents_to_dollars
     macroType: expression
