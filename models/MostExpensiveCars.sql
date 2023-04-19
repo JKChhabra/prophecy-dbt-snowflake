@@ -61,6 +61,6 @@ HumanReadable AS (
 
 )
 
-SELECT * 
+SELECT *
 
 FROM HumanReadable
