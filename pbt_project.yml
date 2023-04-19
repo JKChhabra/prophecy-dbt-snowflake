@@ -25,7 +25,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/staging/stg_orders.sql
-    - .prophecy/ide/models/stg_orders.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
@@ -38,7 +37,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/TopSoldCars.sql
-    - .prophecy/ide/models/TopSoldCars.json
     sqlDependencies:
       models: []
       datasets: []
@@ -50,7 +48,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/MostExpensiveCars.sql
-    - .prophecy/ide/models/MostExpensiveCars.json
     sqlDependencies:
       models: []
       datasets: []
@@ -62,7 +59,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/customer_reports.sql
-    - .prophecy/ide/models/customer_reports.json
     sqlDependencies:
       models: []
       datasets: []
@@ -75,7 +71,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/orders.sql
-    - .prophecy/ide/models/orders.json
     - models/schema.yml
     sqlDependencies:
       models: []
@@ -88,7 +83,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/macro_tests.sql
-    - .prophecy/ide/models/macro_tests.json
     sqlDependencies:
       models: []
       datasets: []
@@ -101,7 +95,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/customers.sql
-    - .prophecy/ide/models/customers.json
     - models/schema.yml
     sqlDependencies:
       models: []
@@ -114,7 +107,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/staging/stg_payments.sql
-    - .prophecy/ide/models/stg_payments.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
@@ -127,7 +119,6 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/staging/stg_customers.sql
-    - .prophecy/ide/models/stg_customers.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
