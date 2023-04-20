@@ -1,0 +1,28 @@
+{
+  "macro_lFQtyY7o" : {
+    "name" : "cents_to_dollars",
+    "macroId" : "macro_lFQtyY7o",
+    "macroType" : "expression",
+    "definition" : "({{column_name}} / 100)::numeric(16, {{precision}})",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ {
+        "name" : "column_name",
+        "kind" : {
+          "type" : "unknown"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false
+      }, {
+        "name" : "precision",
+        "kind" : {
+          "type" : "unknown",
+          "value" : "2"
+        },
+        "optional" : true,
+        "isWorkflowNodeConfiguration" : false
+      } ]
+    },
+    "staleState" : "none"
+  }
+}

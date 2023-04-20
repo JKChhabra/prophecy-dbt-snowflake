@@ -1,0 +1,258 @@
+{
+  "id" : "TopSoldCars",
+  "metainfo" : {
+    "label" : "TopSoldCars",
+    "autoLayout" : true,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "userDefinedConfig" : {
+        "vars" : { }
+      }
+    }
+  },
+  "processes" : {
+    "salesByModel##ogCdfimQ" : {
+      "id" : "salesByModel##ogCdfimQ",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "salesByModel",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "aggregate" : [ {
+          "expression" : {
+            "expression" : "any_value(MANUFACTURER)"
+          },
+          "alias" : "MANUFACTURER"
+        }, {
+          "expression" : {
+            "expression" : "any_value(MODEL)"
+          },
+          "alias" : "MODEL"
+        }, {
+          "expression" : {
+            "expression" : "min(MODELDATE)"
+          },
+          "alias" : "LAUNCH_DATE"
+        }, {
+          "expression" : {
+            "expression" : "COUNT(1)"
+          },
+          "alias" : "MODELS_SOLD"
+        } ],
+        "allowSelection" : true,
+        "condition" : {
+          "expression" : ""
+        },
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ ],
+        "groupBy" : [ {
+          "expression" : {
+            "expression" : "MODEL"
+          }
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "B9Zefe2S",
+          "slug" : "reformat"
+        } ],
+        "outputs" : [ {
+          "id" : "o708NozU",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "OrderBySale##gD58YyMn" : {
+      "id" : "OrderBySale##gD58YyMn",
+      "component" : "OrderBy",
+      "metadata" : {
+        "label" : "OrderBySale",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "orders" : [ {
+          "expression" : {
+            "expression" : "MODELS_SOLD"
+          },
+          "sortType" : "desc",
+          "nullsType" : "nulls last"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "XC2imHtt",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "Crx8SRY8",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "reformat##FRPMwP5r" : {
+      "id" : "reformat##FRPMwP5r",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "reformat",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "DATA['manufacturer']"
+          },
+          "alias" : "manufacturer"
+        }, {
+          "expression" : {
+            "expression" : "DATA['model']"
+          },
+          "alias" : "model"
+        }, {
+          "expression" : {
+            "expression" : "DATA['modelDate']"
+          },
+          "alias" : "modelDate"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "JBFO8t8B",
+          "schema" : {
+            "providerType" : "snowflake",
+            "fields" : [ ]
+          },
+          "slug" : "USED_CARS"
+        } ],
+        "outputs" : [ {
+          "id" : "Tixl8IHJ",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "TopSoldCars##sxolU8Xm" : {
+      "id" : "TopSoldCars##sxolU8Xm",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "TopSoldCars",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM Top10\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "kVKFNwSW",
+          "slug" : "Top10"
+        } ],
+        "outputs" : [ {
+          "id" : "ZonV3e5L",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "USED_CARS##Ca9dRgBV" : {
+      "id" : "USED_CARS##Ca9dRgBV",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "USED_CARS",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "USED_CARS",
+          "sourceType" : "Source",
+          "sourceName" : "TESTING.PUBLIC"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "f4Zz4qqa",
+          "schema" : {
+            "providerType" : "snowflake",
+            "fields" : [ ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "Top10##MKfRwDuQ" : {
+      "id" : "Top10##MKfRwDuQ",
+      "component" : "Limit",
+      "metadata" : {
+        "label" : "Top10",
+        "phase" : 0
+      },
+      "properties" : {
+        "limit" : {
+          "expression" : "10"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "mc1eFbq2",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "rpxR0Gmo",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "K51f6D70",
+    "source" : "USED_CARS##Ca9dRgBV",
+    "sourcePort" : "f4Zz4qqa",
+    "target" : "reformat##FRPMwP5r",
+    "targetPort" : "JBFO8t8B"
+  }, {
+    "id" : "LA8IAKiP",
+    "source" : "reformat##FRPMwP5r",
+    "sourcePort" : "Tixl8IHJ",
+    "target" : "salesByModel##ogCdfimQ",
+    "targetPort" : "B9Zefe2S"
+  }, {
+    "id" : "QKQuXQNg",
+    "source" : "salesByModel##ogCdfimQ",
+    "sourcePort" : "o708NozU",
+    "target" : "OrderBySale##gD58YyMn",
+    "targetPort" : "XC2imHtt"
+  }, {
+    "id" : "OVCxJCzf",
+    "source" : "OrderBySale##gD58YyMn",
+    "sourcePort" : "Crx8SRY8",
+    "target" : "Top10##MKfRwDuQ",
+    "targetPort" : "mc1eFbq2"
+  }, {
+    "id" : "Y61VG0ny",
+    "source" : "Top10##MKfRwDuQ",
+    "sourcePort" : "rpxR0Gmo",
+    "target" : "TopSoldCars##sxolU8Xm",
+    "targetPort" : "kVKFNwSW"
+  } ],
+  "component" : "Model"
+}

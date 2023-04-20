@@ -1,0 +1,347 @@
+{
+  "id" : "customer_reports",
+  "metainfo" : {
+    "label" : "customer_reports",
+    "autoLayout" : true,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "userDefinedConfig" : {
+        "vars" : { }
+      }
+    }
+  },
+  "processes" : {
+    "ORDERS##tpiM8fPr" : {
+      "id" : "ORDERS##tpiM8fPr",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "ORDERS",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "ORDERS",
+          "sourceType" : "Source",
+          "sourceName" : "JAFFLE_SHOP.PUBLIC"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "y7WO4hFS",
+          "schema" : {
+            "providerType" : "snowflake",
+            "fields" : [ ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "AmountByCustomer##BwtG7ssB" : {
+      "id" : "AmountByCustomer##BwtG7ssB",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "AmountByCustomer",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "aggregate" : [ {
+          "expression" : {
+            "expression" : "SUM(AMOUNT)"
+          },
+          "alias" : "AMOUNT"
+        }, {
+          "expression" : {
+            "expression" : "CUSTOMER_ID"
+          },
+          "alias" : "CUSTOMER_ID"
+        }, {
+          "expression" : {
+            "expression" : "MAX(ORDER_DATE)"
+          },
+          "alias" : "ORDER_DATE"
+        } ],
+        "allowSelection" : true,
+        "condition" : {
+          "expression" : ""
+        },
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ ],
+        "groupBy" : [ {
+          "expression" : {
+            "expression" : "CUSTOMER_ID"
+          }
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "xWwXmvi4",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "Ywr5FCKk",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "customer_reports##j0EGT8hR" : {
+      "id" : "customer_reports##j0EGT8hR",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "customer_reports",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM Top10\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "arFWEHdz",
+          "slug" : "Top10"
+        } ],
+        "outputs" : [ {
+          "id" : "KPW7LFso",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "Top10##JRG9vWcd" : {
+      "id" : "Top10##JRG9vWcd",
+      "component" : "Limit",
+      "metadata" : {
+        "label" : "Top10",
+        "phase" : 0
+      },
+      "properties" : {
+        "limit" : {
+          "expression" : "10"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "dg5D6g6o",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "FCKC0UyE",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "byCustomerId##peInI11V" : {
+      "id" : "byCustomerId##peInI11V",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "byCustomerId",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "CUSTOMERS",
+          "expression" : {
+            "expression" : "ORDERS.CUSTOMER_ID = CUSTOMERS.CUSTOMER_ID"
+          },
+          "joinType" : "INNER"
+        } ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "CUSTOMERS.FIRST_ORDER"
+          },
+          "alias" : "FIRST_ORDER"
+        }, {
+          "expression" : {
+            "expression" : "CUSTOMERS.MOST_RECENT_ORDER"
+          },
+          "alias" : "MOST_RECENT_ORDER"
+        }, {
+          "expression" : {
+            "expression" : "CUSTOMERS.NUMBER_OF_ORDERS"
+          },
+          "alias" : "NUMBER_OF_ORDERS"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.CUSTOMER_ID"
+          },
+          "alias" : "CUSTOMER_ID"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.COUPON_AMOUNT"
+          },
+          "alias" : "COUPON_AMOUNT"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.CREDIT_CARD_AMOUNT"
+          },
+          "alias" : "CREDIT_CARD_AMOUNT"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.ORDER_ID"
+          },
+          "alias" : "ORDER_ID"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.STATUS"
+          },
+          "alias" : "STATUS"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.BANK_TRANSFER_AMOUNT"
+          },
+          "alias" : "BANK_TRANSFER_AMOUNT"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.ORDER_DATE"
+          },
+          "alias" : "ORDER_DATE"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.GIFT_CARD_AMOUNT"
+          },
+          "alias" : "GIFT_CARD_AMOUNT"
+        }, {
+          "expression" : {
+            "expression" : "ORDERS.AMOUNT"
+          },
+          "alias" : "AMOUNT"
+        } ],
+        "activeTab" : "conditions",
+        "columnsSelector" : [ ],
+        "headAlias" : "ORDERS"
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "fkvqEbE4",
+          "schema" : {
+            "providerType" : "snowflake",
+            "fields" : [ ]
+          },
+          "slug" : "ORDERS"
+        }, {
+          "id" : "lb0kOUH6",
+          "schema" : {
+            "providerType" : "snowflake",
+            "fields" : [ ]
+          },
+          "slug" : "CUSTOMERS"
+        } ],
+        "outputs" : [ {
+          "id" : "jfAp75Ae",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "TopCustomers##PrhsnetB" : {
+      "id" : "TopCustomers##PrhsnetB",
+      "component" : "OrderBy",
+      "metadata" : {
+        "label" : "TopCustomers",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "orders" : [ {
+          "expression" : {
+            "expression" : "AMOUNT"
+          },
+          "sortType" : "desc",
+          "nullsType" : "nulls last"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "xjUqHu9t",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "UTEfrHSA",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "CUSTOMERS##DJo5u35J" : {
+      "id" : "CUSTOMERS##DJo5u35J",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "CUSTOMERS",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "CUSTOMERS",
+          "sourceType" : "Source",
+          "sourceName" : "JAFFLE_SHOP.PUBLIC"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "ojHNVvku",
+          "schema" : {
+            "providerType" : "snowflake",
+            "fields" : [ ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "oaACSWhS",
+    "source" : "ORDERS##tpiM8fPr",
+    "sourcePort" : "y7WO4hFS",
+    "target" : "byCustomerId##peInI11V",
+    "targetPort" : "fkvqEbE4"
+  }, {
+    "id" : "NC4LjNu8",
+    "source" : "CUSTOMERS##DJo5u35J",
+    "sourcePort" : "ojHNVvku",
+    "target" : "byCustomerId##peInI11V",
+    "targetPort" : "lb0kOUH6"
+  }, {
+    "id" : "rs0Hdbed",
+    "source" : "byCustomerId##peInI11V",
+    "sourcePort" : "jfAp75Ae",
+    "target" : "AmountByCustomer##BwtG7ssB",
+    "targetPort" : "xWwXmvi4"
+  }, {
+    "id" : "UsllvzUk",
+    "source" : "AmountByCustomer##BwtG7ssB",
+    "sourcePort" : "Ywr5FCKk",
+    "target" : "TopCustomers##PrhsnetB",
+    "targetPort" : "xjUqHu9t"
+  }, {
+    "id" : "hhWN7Vb7",
+    "source" : "TopCustomers##PrhsnetB",
+    "sourcePort" : "UTEfrHSA",
+    "target" : "Top10##JRG9vWcd",
+    "targetPort" : "dg5D6g6o"
+  }, {
+    "id" : "UzV1MuE8",
+    "source" : "Top10##JRG9vWcd",
+    "sourcePort" : "FCKC0UyE",
+    "target" : "customer_reports##j0EGT8hR",
+    "targetPort" : "arFWEHdz"
+  } ],
+  "component" : "Model"
+}

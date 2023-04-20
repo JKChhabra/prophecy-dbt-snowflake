@@ -25,6 +25,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/staging/stg_orders.sql
+    - .prophecy/ide/models/stg_orders.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
@@ -37,6 +38,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/TopSoldCars.sql
+    - .prophecy/ide/models/TopSoldCars.json
     sqlDependencies:
       models: []
       datasets: []
@@ -48,6 +50,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/MostExpensiveCars.sql
+    - .prophecy/ide/models/MostExpensiveCars.json
     sqlDependencies:
       models: []
       datasets: []
@@ -59,6 +62,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/customer_reports.sql
+    - .prophecy/ide/models/customer_reports.json
     sqlDependencies:
       models: []
       datasets: []
@@ -71,6 +75,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/orders.sql
+    - .prophecy/ide/models/orders.json
     - models/schema.yml
     sqlDependencies:
       models: []
@@ -83,6 +88,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/macro_tests.sql
+    - .prophecy/ide/models/macro_tests.json
     sqlDependencies:
       models: []
       datasets: []
@@ -95,6 +101,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/customers.sql
+    - .prophecy/ide/models/customers.json
     - models/schema.yml
     sqlDependencies:
       models: []
@@ -107,6 +114,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/staging/stg_payments.sql
+    - .prophecy/ide/models/stg_payments.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
@@ -119,6 +127,7 @@ sqlModels:
     author: ashish@prophecy.io
     files:
     - models/staging/stg_customers.sql
+    - .prophecy/ide/models/stg_customers.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
@@ -133,6 +142,7 @@ sqlMacros:
     author: ashish@prophecy.io
     files:
     - macros/add_audit_cols.sql
+    - .prophecy/ide/macros/add_audit_cols.json
     - macros/macros_001.yml
     createdAt: '2023-04-13 10:55:16'
     modifiedAt: '2023-04-13 10:55:16'
@@ -143,6 +153,7 @@ sqlMacros:
     author: ashish@prophecy.io
     files:
     - macros/cents_to_dollars.sql
+    - .prophecy/ide/macros/cents_to_dollars.json
     createdAt: '2023-04-06 14:09:30'
     modifiedAt: '2023-04-06 14:09:30'
   .prophecy/metadata/sqlmacros/dollars_to_cents:
@@ -152,6 +163,7 @@ sqlMacros:
     author: ashish@prophecy.io
     files:
     - macros/dollars_to_cents.sql
+    - .prophecy/ide/macros/dollars_to_cents.json
     createdAt: '2023-04-06 10:52:55'
     modifiedAt: '2023-04-06 10:52:55'
   .prophecy/metadata/sqlmacros/human_readable_number:
@@ -162,6 +174,7 @@ sqlMacros:
     author: ashish@prophecy.io
     files:
     - macros/human_readable_number.sql
+    - .prophecy/ide/macros/human_readable_number.json
     - macros/macros.yml
     createdAt: '2023-04-06 10:56:03'
     modifiedAt: '2023-04-06 10:56:03'

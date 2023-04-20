@@ -1,0 +1,574 @@
+{
+  "id" : "macro_tests",
+  "metainfo" : {
+    "label" : "macro_tests",
+    "autoLayout" : true,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "userDefinedConfig" : {
+        "vars" : { }
+      }
+    }
+  },
+  "processes" : {
+    "raw_payments##FaJZrBJ5" : {
+      "id" : "raw_payments##FaJZrBJ5",
+      "component" : "Seed",
+      "metadata" : {
+        "label" : "raw_payments",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "raw_payments",
+          "sourceType" : "Seed"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "CP9aSP4e",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "byOrder##Nn5RVP29" : {
+      "id" : "byOrder##Nn5RVP29",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "byOrder",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "in1",
+          "expression" : {
+            "expression" : "raw_payments.order_id = in1.id"
+          },
+          "joinType" : "INNER"
+        } ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "raw_payments.payment_method"
+          },
+          "alias" : "payment_method"
+        }, {
+          "expression" : {
+            "expression" : "raw_payments.amount"
+          },
+          "alias" : "amount"
+        }, {
+          "expression" : {
+            "expression" : "in1.order_date"
+          },
+          "alias" : "order_date"
+        }, {
+          "expression" : {
+            "expression" : "in1.status"
+          },
+          "alias" : "status"
+        }, {
+          "expression" : {
+            "expression" : "raw_payments.order_id"
+          },
+          "alias" : "order_id"
+        }, {
+          "expression" : {
+            "expression" : "in1.user_id"
+          },
+          "alias" : "user_id"
+        } ],
+        "activeTab" : "conditions",
+        "columnsSelector" : [ "vq4mA0jN##order_id", "BIOId7nO##id", "vq4mA0jN##payment_method", "vq4mA0jN##amount", "BIOId7nO##order_date", "BIOId7nO##status", "vq4mA0jN##order_id", "BIOId7nO##user_id" ],
+        "headAlias" : "raw_payments"
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "vq4mA0jN",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
+          "slug" : "raw_payments"
+        }, {
+          "id" : "BIOId7nO",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "user_id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "in1"
+        } ],
+        "outputs" : [ {
+          "id" : "rewGbrKz",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "AmountByCustomer##HeocQlkS" : {
+      "id" : "AmountByCustomer##HeocQlkS",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "AmountByCustomer",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "aggregate" : [ {
+          "expression" : {
+            "expression" : "USER_ID"
+          },
+          "alias" : "USER_ID"
+        }, {
+          "expression" : {
+            "expression" : "sum(AMOUNT)"
+          },
+          "alias" : "AMOUNT"
+        }, {
+          "expression" : {
+            "expression" : "max(ORDER_DATE)"
+          },
+          "alias" : "ORDER_DATE"
+        }, {
+          "expression" : {
+            "expression" : "ANY_VALUE(FULL_NAME)"
+          },
+          "alias" : "FULL_NAME"
+        }, {
+          "expression" : {
+            "expression" : "sum(AMOUNT_CENTS)"
+          },
+          "alias" : "AMOUNT_CENTS"
+        } ],
+        "allowSelection" : true,
+        "condition" : {
+          "expression" : ""
+        },
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ ],
+        "groupBy" : [ {
+          "expression" : {
+            "expression" : "USER_ID"
+          }
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "OEiyZ7kT",
+          "slug" : "byCustomer"
+        } ],
+        "outputs" : [ {
+          "id" : "mwqbSEuG",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "raw_customers##yjA1W7iO" : {
+      "id" : "raw_customers##yjA1W7iO",
+      "component" : "Seed",
+      "metadata" : {
+        "label" : "raw_customers",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "raw_customers",
+          "sourceType" : "Seed"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "CsiydC7y",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "first_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "last_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "HumanReadableAmount##FxC8TPgz" : {
+      "id" : "HumanReadableAmount##FxC8TPgz",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "HumanReadableAmount",
+        "phase" : 0,
+        "macroDependencies" : [ "human_readable_number" ]
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "USER_ID"
+          },
+          "alias" : "USER_ID"
+        }, {
+          "expression" : {
+            "expression" : "AMOUNT"
+          },
+          "alias" : "AMOUNT"
+        }, {
+          "expression" : {
+            "expression" : "ORDER_DATE"
+          },
+          "alias" : "ORDER_DATE"
+        }, {
+          "expression" : {
+            "expression" : "FULL_NAME"
+          },
+          "alias" : "FULL_NAME"
+        }, {
+          "expression" : {
+            "expression" : "AMOUNT_CENTS"
+          },
+          "alias" : "AMOUNT_CENTS"
+        }, {
+          "expression" : {
+            "expression" : "{{ human_readable_number('AMOUNT_CENTS') }}"
+          },
+          "alias" : "HUMAN_AMOUNT_CENTS"
+        }, {
+          "expression" : {
+            "expression" : "{{ human_readable_number('AMOUNT') }}"
+          },
+          "alias" : "HUMAN_AMOUNT"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "V4Waam9B",
+          "slug" : "AmountByCustomer"
+        } ],
+        "outputs" : [ {
+          "id" : "qrVdxftV",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "macro_tests##EzNnhuzE" : {
+      "id" : "macro_tests##EzNnhuzE",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "macro_tests",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM add_audit_cols_1\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "goSqLd2S",
+          "slug" : "add_audit_cols_1"
+        } ],
+        "outputs" : [ {
+          "id" : "TrYbcUww",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "byCustomer##EqaLwdha" : {
+      "id" : "byCustomer##EqaLwdha",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "byCustomer",
+        "phase" : 0,
+        "macroDependencies" : [ "dollars_to_cents" ]
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "in1",
+          "expression" : {
+            "expression" : "in0.USER_ID = in1.id"
+          },
+          "joinType" : "INNER"
+        } ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "in0.USER_ID"
+          },
+          "alias" : "USER_ID"
+        }, {
+          "expression" : {
+            "expression" : "in0.AMOUNT"
+          },
+          "alias" : "AMOUNT"
+        }, {
+          "expression" : {
+            "expression" : "in0.ORDER_DATE"
+          },
+          "alias" : "ORDER_DATE"
+        }, {
+          "expression" : {
+            "expression" : "CALCULATE_FULL_NAME(in1.first_name, '', in1.last_name)"
+          },
+          "alias" : "full_name"
+        }, {
+          "expression" : {
+            "expression" : "{{ dollars_to_cents('in0.AMOUNT') }}"
+          },
+          "alias" : "AMOUNT_CENTS"
+        } ],
+        "activeTab" : "conditions",
+        "columnsSelector" : [ "CaUhH8zV##id", "CaUhH8zV##first_name", "CaUhH8zV##last_name" ],
+        "headAlias" : "in0"
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "wx3uqn1B",
+          "slug" : "in0"
+        }, {
+          "id" : "CaUhH8zV",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "first_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "last_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "in1"
+        } ],
+        "outputs" : [ {
+          "id" : "GvrY0YMa",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "raw_orders##G4rlX5Dp" : {
+      "id" : "raw_orders##G4rlX5Dp",
+      "component" : "Seed",
+      "metadata" : {
+        "label" : "raw_orders",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "raw_orders",
+          "sourceType" : "Seed"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "Dr1MRRp6",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "user_id",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "add_audit_cols_1##jUVIOejf" : {
+      "id" : "add_audit_cols_1##jUVIOejf",
+      "component" : "Macro",
+      "metadata" : {
+        "label" : "add_audit_cols_1",
+        "phase" : 0,
+        "macroDependencies" : [ "jaffle_shop.add_audit_cols" ]
+      },
+      "properties" : {
+        "macroName" : "add_audit_cols",
+        "parameters" : [ {
+          "name" : "table_name",
+          "value" : "'HumanReadableAmount'"
+        }, {
+          "name" : "modified_by",
+          "value" : "'ASHISH'"
+        } ],
+        "projectName" : "jaffle_shop"
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "NxHpX21V",
+          "slug" : "HumanReadableAmount"
+        } ],
+        "outputs" : [ {
+          "id" : "VDRoEmZ5",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "JkfaX9Tw",
+    "source" : "raw_payments##FaJZrBJ5",
+    "sourcePort" : "CP9aSP4e",
+    "target" : "byOrder##Nn5RVP29",
+    "targetPort" : "vq4mA0jN"
+  }, {
+    "id" : "KN6MFrDa",
+    "source" : "raw_orders##G4rlX5Dp",
+    "sourcePort" : "Dr1MRRp6",
+    "target" : "byOrder##Nn5RVP29",
+    "targetPort" : "BIOId7nO"
+  }, {
+    "id" : "MWGSkxbS",
+    "source" : "byOrder##Nn5RVP29",
+    "sourcePort" : "rewGbrKz",
+    "target" : "byCustomer##EqaLwdha",
+    "targetPort" : "wx3uqn1B"
+  }, {
+    "id" : "lg98o8ds",
+    "source" : "raw_customers##yjA1W7iO",
+    "sourcePort" : "CsiydC7y",
+    "target" : "byCustomer##EqaLwdha",
+    "targetPort" : "CaUhH8zV"
+  }, {
+    "id" : "pDldkPec",
+    "source" : "byCustomer##EqaLwdha",
+    "sourcePort" : "GvrY0YMa",
+    "target" : "AmountByCustomer##HeocQlkS",
+    "targetPort" : "OEiyZ7kT"
+  }, {
+    "id" : "sILfaBky",
+    "source" : "AmountByCustomer##HeocQlkS",
+    "sourcePort" : "mwqbSEuG",
+    "target" : "HumanReadableAmount##FxC8TPgz",
+    "targetPort" : "V4Waam9B"
+  }, {
+    "id" : "gMPfRnIw",
+    "source" : "HumanReadableAmount##FxC8TPgz",
+    "sourcePort" : "qrVdxftV",
+    "target" : "add_audit_cols_1##jUVIOejf",
+    "targetPort" : "NxHpX21V"
+  }, {
+    "id" : "yTzQvzDv",
+    "source" : "add_audit_cols_1##jUVIOejf",
+    "sourcePort" : "VDRoEmZ5",
+    "target" : "macro_tests##EzNnhuzE",
+    "targetPort" : "goSqLd2S"
+  } ],
+  "component" : "Model"
+}

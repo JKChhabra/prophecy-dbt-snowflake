@@ -1,0 +1,298 @@
+{
+  "id" : "MostExpensiveCars",
+  "metainfo" : {
+    "label" : "MostExpensiveCars",
+    "autoLayout" : true,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "userDefinedConfig" : {
+        "vars" : { }
+      }
+    }
+  },
+  "processes" : {
+    "salesByModel##g2XApFwC" : {
+      "id" : "salesByModel##g2XApFwC",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "salesByModel",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "aggregate" : [ {
+          "expression" : {
+            "expression" : "any_value(MANUFACTURER)"
+          },
+          "alias" : "MANUFACTURER"
+        }, {
+          "expression" : {
+            "expression" : "any_value(MODEL)"
+          },
+          "alias" : "MODEL"
+        }, {
+          "expression" : {
+            "expression" : "max(PRICE)"
+          },
+          "alias" : "PRICE"
+        } ],
+        "allowSelection" : true,
+        "condition" : {
+          "expression" : ""
+        },
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ ],
+        "groupBy" : [ {
+          "expression" : {
+            "expression" : "MODEL"
+          }
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "Dk6sGZkI",
+          "slug" : "reformat"
+        } ],
+        "outputs" : [ {
+          "id" : "UAEszpia",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "USED_CARS##rrZK7ykJ" : {
+      "id" : "USED_CARS##rrZK7ykJ",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "USED_CARS",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "USED_CARS",
+          "sourceType" : "Source",
+          "sourceName" : "TESTING.PUBLIC"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "InAIYQD4",
+          "schema" : {
+            "providerType" : "snowflake",
+            "fields" : [ ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "MostExpensiveCars##sGbw5NCp" : {
+      "id" : "MostExpensiveCars##sGbw5NCp",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "MostExpensiveCars",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM HumanReadable\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "i37fPJE4",
+          "slug" : "HumanReadable"
+        } ],
+        "outputs" : [ {
+          "id" : "iSsyIdgJ",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "OrderBySale##QDmURFAh" : {
+      "id" : "OrderBySale##QDmURFAh",
+      "component" : "OrderBy",
+      "metadata" : {
+        "label" : "OrderBySale",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "orders" : [ {
+          "expression" : {
+            "expression" : "PRICE"
+          },
+          "sortType" : "desc",
+          "nullsType" : "nulls last"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "gkyRuTfm",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "CghNSFoa",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "HumanReadable##FbFSkxwS" : {
+      "id" : "HumanReadable##FbFSkxwS",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "HumanReadable",
+        "phase" : 0,
+        "macroDependencies" : [ "jaffle_shop.human_readable_number" ]
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "MANUFACTURER"
+          },
+          "alias" : "MANUFACTURER"
+        }, {
+          "expression" : {
+            "expression" : "MODEL"
+          },
+          "alias" : "MODEL"
+        }, {
+          "expression" : {
+            "expression" : "{{ jaffle_shop.human_readable_number('PRICE') }}"
+          },
+          "alias" : "PRICE"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "hjd5txDk",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "QAKfZgmn",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "reformat##YSJqjPd4" : {
+      "id" : "reformat##YSJqjPd4",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "reformat",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "DATA['manufacturer']::STRING"
+          },
+          "alias" : "manufacturer"
+        }, {
+          "expression" : {
+            "expression" : "DATA['model']::STRING"
+          },
+          "alias" : "model"
+        }, {
+          "expression" : {
+            "expression" : "DATA['price'] / 280"
+          },
+          "alias" : "price"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "AgLEFwbm",
+          "schema" : {
+            "providerType" : "snowflake",
+            "fields" : [ ]
+          },
+          "slug" : "USED_CARS"
+        } ],
+        "outputs" : [ {
+          "id" : "NnvhjFFd",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "Top10##EPJBr0qE" : {
+      "id" : "Top10##EPJBr0qE",
+      "component" : "Limit",
+      "metadata" : {
+        "label" : "Top10",
+        "phase" : 0
+      },
+      "properties" : {
+        "limit" : {
+          "expression" : "10"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "R6ce1hne",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "bvrmhtBE",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "LOgQV9yh",
+    "source" : "USED_CARS##rrZK7ykJ",
+    "sourcePort" : "InAIYQD4",
+    "target" : "reformat##YSJqjPd4",
+    "targetPort" : "AgLEFwbm"
+  }, {
+    "id" : "y5fFGLTy",
+    "source" : "reformat##YSJqjPd4",
+    "sourcePort" : "NnvhjFFd",
+    "target" : "salesByModel##g2XApFwC",
+    "targetPort" : "Dk6sGZkI"
+  }, {
+    "id" : "MhoPnDDw",
+    "source" : "salesByModel##g2XApFwC",
+    "sourcePort" : "UAEszpia",
+    "target" : "OrderBySale##QDmURFAh",
+    "targetPort" : "gkyRuTfm"
+  }, {
+    "id" : "bdlJmKIl",
+    "source" : "OrderBySale##QDmURFAh",
+    "sourcePort" : "CghNSFoa",
+    "target" : "Top10##EPJBr0qE",
+    "targetPort" : "R6ce1hne"
+  }, {
+    "id" : "TEGTYzoz",
+    "source" : "Top10##EPJBr0qE",
+    "sourcePort" : "bvrmhtBE",
+    "target" : "HumanReadable##FbFSkxwS",
+    "targetPort" : "hjd5txDk"
+  }, {
+    "id" : "y1A0O3aX",
+    "source" : "HumanReadable##FbFSkxwS",
+    "sourcePort" : "QAKfZgmn",
+    "target" : "MostExpensiveCars##sGbw5NCp",
+    "targetPort" : "i37fPJE4"
+  } ],
+  "component" : "Model"
+}

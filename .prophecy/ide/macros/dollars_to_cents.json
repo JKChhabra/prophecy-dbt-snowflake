@@ -1,0 +1,20 @@
+{
+  "macro_IxF6NMPD" : {
+    "name" : "dollars_to_cents",
+    "macroId" : "macro_IxF6NMPD",
+    "macroType" : "expression",
+    "definition" : "-- this macro converts USD to cents\namount * 100",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ {
+        "name" : "amount",
+        "kind" : {
+          "type" : "unknown"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false
+      } ]
+    },
+    "staleState" : "none"
+  }
+}
