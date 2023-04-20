@@ -69,6 +69,6 @@ Top10 AS (
 
 )
 
-SELECT * 
+SELECT *
 
 FROM Top10

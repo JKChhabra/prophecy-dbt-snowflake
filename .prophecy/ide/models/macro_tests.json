@@ -169,6 +169,40 @@
         } ],
         "outputs" : [ {
           "id" : "rewGbrKz",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "PAYMENT_METHOD",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "STATUS",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "ORDER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -224,10 +258,68 @@
       "ports" : {
         "inputs" : [ {
           "id" : "OEiyZ7kT",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "byCustomer"
         } ],
         "outputs" : [ {
           "id" : "mwqbSEuG",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -324,10 +416,78 @@
       "ports" : {
         "inputs" : [ {
           "id" : "V4Waam9B",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "AmountByCustomer"
         } ],
         "outputs" : [ {
           "id" : "qrVdxftV",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -354,10 +514,108 @@
       "ports" : {
         "inputs" : [ {
           "id" : "goSqLd2S",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "MODIFIED_ON",
+              "dataType" : {
+                "type" : "Timestamp"
+              }
+            }, {
+              "name" : "MODIFIED_BY",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
           "slug" : "add_audit_cols_1"
         } ],
         "outputs" : [ {
           "id" : "TrYbcUww",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "MODIFIED_ON",
+              "dataType" : {
+                "type" : "Timestamp"
+              }
+            }, {
+              "name" : "MODIFIED_BY",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -412,6 +670,40 @@
       "ports" : {
         "inputs" : [ {
           "id" : "wx3uqn1B",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "PAYMENT_METHOD",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "STATUS",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "ORDER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "in0"
         }, {
           "id" : "CaUhH8zV",
@@ -438,6 +730,35 @@
         } ],
         "outputs" : [ {
           "id" : "GvrY0YMa",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -511,10 +832,98 @@
       "ports" : {
         "inputs" : [ {
           "id" : "NxHpX21V",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
           "slug" : "HumanReadableAmount"
         } ],
         "outputs" : [ {
           "id" : "VDRoEmZ5",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "USER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "AMOUNT",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "ORDER_DATE",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "FULL_NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT_CENTS",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "HUMAN_AMOUNT",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "MODIFIED_ON",
+              "dataType" : {
+                "type" : "Timestamp"
+              }
+            }, {
+              "name" : "MODIFIED_BY",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false

@@ -59,10 +59,53 @@
       "ports" : {
         "inputs" : [ {
           "id" : "B9Zefe2S",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELDATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            } ]
+          },
           "slug" : "reformat"
         } ],
         "outputs" : [ {
           "id" : "o708NozU",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "LAUNCH_DATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELS_SOLD",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -89,10 +132,58 @@
       "ports" : {
         "inputs" : [ {
           "id" : "XC2imHtt",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "LAUNCH_DATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELS_SOLD",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "in0"
         } ],
         "outputs" : [ {
           "id" : "Crx8SRY8",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "LAUNCH_DATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELS_SOLD",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -130,12 +221,36 @@
           "id" : "JBFO8t8B",
           "schema" : {
             "providerType" : "snowflake",
-            "fields" : [ ]
+            "fields" : [ {
+              "name" : "DATA",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            } ]
           },
           "slug" : "USED_CARS"
         } ],
         "outputs" : [ {
           "id" : "Tixl8IHJ",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELDATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -162,10 +277,58 @@
       "ports" : {
         "inputs" : [ {
           "id" : "kVKFNwSW",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "LAUNCH_DATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELS_SOLD",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "Top10"
         } ],
         "outputs" : [ {
           "id" : "ZonV3e5L",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "LAUNCH_DATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELS_SOLD",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -191,7 +354,12 @@
           "id" : "f4Zz4qqa",
           "schema" : {
             "providerType" : "snowflake",
-            "fields" : [ ]
+            "fields" : [ {
+              "name" : "DATA",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            } ]
           },
           "slug" : "out"
         } ],
@@ -213,10 +381,58 @@
       "ports" : {
         "inputs" : [ {
           "id" : "mc1eFbq2",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "LAUNCH_DATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELS_SOLD",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "in0"
         } ],
         "outputs" : [ {
           "id" : "rpxR0Gmo",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "MANUFACTURER",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODEL",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "LAUNCH_DATE",
+              "dataType" : {
+                "type" : "Variant"
+              }
+            }, {
+              "name" : "MODELS_SOLD",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
